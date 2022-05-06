@@ -1,14 +1,14 @@
-import CryptoAES from 'crypto-js/aes';
+import CryptoJS from 'crypto-js';
 import ICrypto from './ICrypto';
 
 export default class AES implements ICrypto {
 
   public encrypt(value: string, password: string): string {
-    return CryptoAES.encrypt(value, password).ciphertext.toString();
+    return CryptoJS.AES.encrypt(value, password).toString();
   }
 
   public decrypt(value: string, password: string): string {
-    return CryptoAES.decrypt(value, password).toString();
+    return CryptoJS.AES.decrypt(value, password).toString(CryptoJS.enc.Utf8);
   }
 
 }

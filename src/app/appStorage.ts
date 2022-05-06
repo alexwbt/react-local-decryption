@@ -5,4 +5,6 @@ const appStorage = new LocalStorage("app", {
   privateKey: ""
 });
 
+appStorage.setItem('privateKey', "");
+
 export default appStorage;

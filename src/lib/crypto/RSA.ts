@@ -7,7 +7,12 @@ export default class RSA implements IDecryptor {
     const decrypt = new JSEncrypt();
     decrypt.setPrivateKey(key);
 
-    return decrypt.decrypt(value) || "Failed";
+    const output = decrypt.decrypt(value);
+
+    if (output === false)
+      throw new Error("RSA: Failed to decrypt value");
+
+    return output;
   }
 
 }

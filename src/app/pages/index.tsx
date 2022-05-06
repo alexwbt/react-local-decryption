@@ -1,5 +1,6 @@
 import { ChangeEvent, useRef, useState } from "react";
 import { Button, FormControl } from "react-bootstrap";
+import { toast } from "react-toastify";
 import styled from "styled-components";
 import AES from "../../lib/crypto/AES";
 import RSA from "../../lib/crypto/RSA";
@@ -53,10 +54,12 @@ const IndexPage: React.FC = () => {
 
       setShowPasswordPrompt(true);
     }
+    if (hiddenFileInput.current)
+      hiddenFileInput.current.value = "";
   };
 
   // decrypt
-  const [decryptText, setDecryptText] = useState("");
+  const [decryptText, setDecryptText] = useState("bERO/2A0cKvtNM9AqHJb+xeduUo0vbkXYh83hoXeVeRiTcvcGTd1IoQ3oMyqV7v0KRspNf9U+i2LJ+SlRRP+WY4XIyq3E0hMoqbMD8f1pYr8IScmGgUA8Wymp8p5EI7hA7BweTitHLZssqw+b2x5QvLiLRQbcXwXlmD9oK1jWCwJ7v4l1nUAr34cPjqhp9zOJPdkU/287mW1qHEzv52sa4Guo+b+BYKbqtouKe5gNde474Fd+yYRM38A5glzm/5/x+huRl8eXn6yMOAIY3deFD9SxE9ZYpHGCVq9e6YUN+L7qeLlBMGJJ9rcTRQAen09mWV27z2ftp33tftKuzAZcg==");
   const [showDecryptPasswordPrompt, setShowDecryptPasswordPrompt] = useState(false);
   const [decryptOutput, setDecryptOutput] = useState("");
   const onDecrypt = () => {
@@ -106,7 +109,12 @@ const IndexPage: React.FC = () => {
         setShowDecryptPasswordPrompt(false);
       }}
       onSubmit={(password: string) => {
-        setDecryptOutput(decryptor.decrypt(decryptText, password));
+        try {
+          setDecryptOutput(decryptor.decrypt(decryptText, password));
+        } catch (error) {
+          setDecryptOutput("");
+          toast.error("Failed to decrypt message");
+        }
         setShowDecryptPasswordPrompt(false);
       }}
     />

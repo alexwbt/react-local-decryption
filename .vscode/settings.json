@@ -4,6 +4,7 @@
         "ciphertext",
         "decryptor",
         "encryptor",
-        "jsencrypt"
+        "jsencrypt",
+        "toastify"
     ]
 }
