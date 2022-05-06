@@ -9,7 +9,6 @@ import PrivateKeyManager, { IStorage } from "../../lib/privateKeyDecryptor/Priva
 import appStorage from "../appStorage";
 import PasswordPrompt from "../features/privateKey/PasswordPrompt";
 
-
 const S = {
   Container: styled.div`
     padding: 10px;
@@ -59,7 +58,7 @@ const IndexPage: React.FC = () => {
   };
 
   // decrypt
-  const [decryptText, setDecryptText] = useState("bERO/2A0cKvtNM9AqHJb+xeduUo0vbkXYh83hoXeVeRiTcvcGTd1IoQ3oMyqV7v0KRspNf9U+i2LJ+SlRRP+WY4XIyq3E0hMoqbMD8f1pYr8IScmGgUA8Wymp8p5EI7hA7BweTitHLZssqw+b2x5QvLiLRQbcXwXlmD9oK1jWCwJ7v4l1nUAr34cPjqhp9zOJPdkU/287mW1qHEzv52sa4Guo+b+BYKbqtouKe5gNde474Fd+yYRM38A5glzm/5/x+huRl8eXn6yMOAIY3deFD9SxE9ZYpHGCVq9e6YUN+L7qeLlBMGJJ9rcTRQAen09mWV27z2ftp33tftKuzAZcg==");
+  const [decryptText, setDecryptText] = useState("agSohUyD3asmIJzoCLYtjv66Ays7+A3GkJ/uAiRWGY/9heWxew0OAXcz6brrEP/6k8oJGuSLLnURyinZ48VyhLEx8ISDjF1egUV05AIvel+oFrMmi9evoGltHS5t05IHFSAe9SPqPyufbvUW2BcQDnDahy7rBezrXfPYONVyABGq4K2x5SqzmlNVYDVP7s9G1AWNj6ZUaGoQpEPvplUquD3dQUM2WX78f6o5an00h/DvsdZbuhByeycQcnYrgoKEbZIUjwIiHgMMuGuy7omoBaLb64cyj2EE63My3Le7YN5ZcQXbF0AnrKuFXSQrii6Uk0W2zEcRFGXHkBHysSVRLQ==");
   const [showDecryptPasswordPrompt, setShowDecryptPasswordPrompt] = useState(false);
   const [decryptOutput, setDecryptOutput] = useState("");
   const onDecrypt = () => {

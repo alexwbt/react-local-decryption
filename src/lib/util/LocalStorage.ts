@@ -5,7 +5,8 @@ export default class LocalStorage<T extends { [key: string]: any; }> {
     private name: string,
     private initialValue: T
   ) {
-    localStorage.setItem(this.name, JSON.stringify(this.initialValue));
+    if (localStorage.getItem(this.name) === null)
+      this.reset();
   }
 
   public getItem<Key extends keyof T>(item: Key): T[Key] {
